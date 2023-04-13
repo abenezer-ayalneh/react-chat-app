@@ -24,7 +24,7 @@ export default function App() {
 
     socket.on('connect', onConnect)
     socket.on('disconnect', onDisconnect)
-    socket.on('foo', onFooEvent)
+    socket.on('message', onFooEvent)
 
     return () => {
       socket.off('connect', onConnect)
