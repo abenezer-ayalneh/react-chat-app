@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, SetStateAction } from 'react'
 import { socket } from './socket'
 import { ConnectionState } from './components/socket/connection-state'
 import { ConnectionManager } from './components/socket/connector-manager'
@@ -19,7 +19,9 @@ export default function App() {
     }
 
     function onFooEvent(value) {
-      setFooEvents((previous) => [...previous, value])
+      setFooEvents((previous ) => {
+        return [...previous, value]
+      })
     }
 
     socket.on('connect', onConnect)
