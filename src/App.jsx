@@ -1,11 +1,5 @@
-import React, { useState, useEffect, SetStateAction, useRef } from 'react'
-import { socket } from './socket'
-import { ConnectionState } from './components/socket/connection-state'
-import { ConnectionManager } from './components/socket/connector-manager'
-import { MyForm } from './components/socket/my-form'
-import { Events } from './components/socket/my-events'
+import React, { useEffect, useRef, useState } from 'react'
 import Chat from './pages/Chat'
-import { ChakraProvider, theme } from '@chakra-ui/react'
 import axios from 'axios'
 
 export default function App() {
