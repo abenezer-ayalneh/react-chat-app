@@ -1,4 +1,4 @@
-import React, { useState, useEffect, SetStateAction } from 'react'
+import React, { useState, useEffect, SetStateAction, useRef } from 'react'
 import { socket } from './socket'
 import { ConnectionState } from './components/socket/connection-state'
 import { ConnectionManager } from './components/socket/connector-manager'
