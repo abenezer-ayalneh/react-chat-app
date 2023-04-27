@@ -38,7 +38,7 @@ const Chat = () => {
     }
 
     function onMessageEvent(value) {
-      console.log({'receive': value });
+      console.log({ receive: value })
       setMessages((previous) => {
         return [...previous, value]
       })
@@ -64,9 +64,10 @@ const Chat = () => {
     socket.on('disconnect', onDisconnect)
     socket.on('receive', onMessageEvent)
     socket.on('acknowledgement', OnAcknowledgement)
+    socket.on('sayHello', (val) => console.log(val))
 
     return async () => {
-      await getUser()
+      // await getUser()
       socket.off('connect', onConnect)
       socket.off('disconnect', onDisconnect)
       socket.off('receive', onMessageEvent)
@@ -104,6 +105,11 @@ const Chat = () => {
     messageInputRef.current.value = ''
     setFile(null)
   }
+  const handleButtonClick = async () => {
+    socket.timeout(5000).emit('sayHello', 'Hello!')
+  }
+
+  
 
   if (Boolean(receiverUser)) {
     return (
@@ -268,6 +274,7 @@ const Chat = () => {
   } else {
     return (
       <>
+        <button onClick={handleButtonClick} type="button" >Say Hello!</button>
         {users
           .filter((u) => u.id !== user.id)
           .map((u, index) => (
